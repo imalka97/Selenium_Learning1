@@ -1,0 +1,38 @@
+package com.ucsc.automationcc.pages.classexamination;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
+
+public class AddExam extends ClassExaminationBasePage
+{
+
+    private final static By BTN_ADD_EXAM = By.xpath("//button[normalize-space()='Add exam']");
+    private final static By DROPDOWN_SELECT_EXAM_TITLE = By.xpath("//div[@id='ExamsReports']//div[2]//div[1]//select[1]");
+    private final static By BTN_ADD_NEW_TITLE = By.xpath("//button[normalize-space()='Add new title']");
+
+    public AddExam(WebDriver driver){
+        super(driver);
+    }
+
+    public void examResult(){
+        driver.findElement(BTN_ADD_EXAM).click();
+        driver.findElement(BTN_ADD_NEW_TITLE).click();
+
+    }
+
+    public void selectExamTitle(String title) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+        // Wait until the dropdown is visible
+        wait.until(ExpectedConditions.visibilityOfElementLocated(DROPDOWN_SELECT_EXAM_TITLE));
+
+        // Interact with the dropdown
+        Select examDropdown = new Select(driver.findElement(DROPDOWN_SELECT_EXAM_TITLE));
+        examDropdown.selectByVisibleText(title);
+    }
+}
