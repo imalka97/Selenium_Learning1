@@ -1,0 +1,61 @@
+package com.ucsc.automationcc.pages.classexamination;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
+
+public class ExamResult extends ClassExaminationBasePage{
+
+    //XPath Locators
+    private final static By BTN_EXAM_RESULT = By.xpath("//button[normalize-space()='Exam result']");
+    private final static By DROPDOWN_SELECT_ACADEMY_CENTER = By.xpath("//label[contains(text(),'Academy center')]/following-sibling::select");
+    private final static By DROPDOWN_SELECT_EXAM_TITLE = By.xpath("//div[@id='ExamsResult']//div[2]//div[1]//select[1]");
+    private final static By INPUT_EXAM_NO = By.xpath("//input[@id='inputEN']");
+    private final static By BTN_FIND = By.xpath("//button[contains(text(),'Find')]");
+    private final static By INPUT_EXAM_RESULT = By.xpath("//input[@id='inputER']");
+    private final static By BTN_ADD = By.xpath("//button[normalize-space()='Add']");
+
+
+    public ExamResult(WebDriver driver){
+        super(driver);
+    }
+
+    public void examResult(String center, String examTitle, String examNumber, String result){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+
+        // Click the "Exam result" button
+        driver.findElement(BTN_EXAM_RESULT).click();
+
+        // Wait and select Academy Center
+        wait.until(ExpectedConditions.visibilityOfElementLocated(DROPDOWN_SELECT_ACADEMY_CENTER));
+        Select academyDropdown = new Select(driver.findElement(DROPDOWN_SELECT_ACADEMY_CENTER));
+        academyDropdown.selectByVisibleText(center);
+
+        // Wait and select Exam Title
+        wait.until(ExpectedConditions.visibilityOfElementLocated(DROPDOWN_SELECT_EXAM_TITLE));
+        Select examDropdown = new Select(driver.findElement(DROPDOWN_SELECT_EXAM_TITLE));
+        examDropdown.selectByVisibleText(examTitle);
+
+        // Enter exam number
+        driver.findElement(INPUT_EXAM_NO).sendKeys(examNumber);
+
+        // Click "Find" button
+        driver.findElement(BTN_FIND).click();
+
+        // Enter result
+        driver.findElement(INPUT_EXAM_RESULT).sendKeys(result);
+
+        // Click "Add" button
+        driver.findElement(BTN_ADD).click();
+
+
+    }
+
+
+
+}
