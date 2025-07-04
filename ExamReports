@@ -1,0 +1,33 @@
+package com.ucsc.automationcc.pages.classexamination;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
+public class ExamReports extends ClassExaminationBasePage{
+
+
+    // XPath Locators
+    private final static By BTN_EXAM_REPORTS = By.xpath("//button[normalize-space()='Exam reports']");
+    private final static By DROPDOWN_SELECT_ACADEMY_CENTER = By.xpath("//div[@class='form-group col-md-4']//select[@id='inputAcademy']");
+    private final static By BTN_GENERATE_Z_SCORE = By.xpath("//button[contains(text(),'Generate Z-score')]");
+    private final static By DROPDOWN_SELECT_EXAM_TITLE = By.xpath("//div[@id='ExamsReports']//div[2]//div[1]//select[1]");
+    private final static By BTN_OPEN_PDF = By.xpath("//button[normalize-space()='Open PDF']");
+    private final static By CHECKBOX_SELECT_HEADERS = By.xpath("//input[@name='check-all']");
+    private final static By CELL_EMAIL = By.xpath("//div[@id='ExamsReports']//table//tr[2]/td[2]");
+    private final static By CELL_MOBILE = By.xpath("//div[@id='ExamsReports']//table//tr[2]/td[3]");
+    private final static By CELL_NIC = By.xpath("//div[@id='ExamsReports']//table//tr[2]/td[4]");
+    private final static By CELL_FIRST_NAME = By.xpath("//div[@id='ExamsReports']//table//tr[2]/td[5]");
+    private final static By CELL_LAST_NAME = By.xpath("//div[@id='ExamsReports']//table//tr[2]/td[6]");
+    private final static By CELL_STREAM = By.xpath("//div[@id='ExamsReports']//table//tr[2]/td[7]");
+    private final static By CELL_TRY = By.xpath("//div[@id='ExamsReports']//table//tr[2]/td[8]");
+    private final static By CELL_GENDER = By.xpath("//div[@id='ExamsReports']//table//tr[2]/td[9]");
+    private final static By CELL_COLLEGE = By.xpath("//div[@id='ExamsReports']//table//tr[2]/td[10]");
+    private final static By CHECKBOX_SELECT_CELLS = By.xpath("//div[@id='ExamsReports']//table//tr[3]/td[1]");
+    private final static By CHECKBOX_CHECKED = By.xpath("//input[@id='smsCheck']");
+    private final static By BTN_SEND_MESSAGE = By.xpath("//button[normalize-space()='Send Message(s)']");
+    
+
+    public ExamReports(WebDriver driver){
+        super(driver);
+    }
+}
